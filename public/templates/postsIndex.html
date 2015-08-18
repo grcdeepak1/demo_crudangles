@@ -1,7 +1,26 @@
 
-See if the posts index template and controller actually loaded!
 
-Value should be here: {{ testValue }}
+<form name="newPost">
+  <h3>Create a New Post</h3>
+  <label>
+  Title
+  <input type="text" ng-model="newPost.title">
+  </label><br>
+  <label>
+  Author
+  <input type="text" ng-model="newPost.author">
+  </label><br>
+  <label>
+  Post Body
+  <textarea ng-model="newPost.body"></textarea>
+  </label>
+  <input type="submit" value="Create New Post" ng-click="addPost()">
+</form>
 
-If resolve and Restangular played nice, you should see some posts here:
-{{ posts }}
+<div ng-repeat="post in posts | orderBy : '-created_at' ">
+  <h3>{{ post.title }}</h3>
+  <p>
+    {{ post.body | firstFewChars }} — <em>by {{ post.author }} </em>
+  </p>
+  <hr>
+</div>

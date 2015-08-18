@@ -18,7 +18,12 @@ var crudAngles = angular.module('crudAngles', ['ui.router', 'restangular'])
       .state('posts.index',{
         url: "/index",
         templateUrl: '/templates/postsIndex.html',
-        controller: 'PostsIndexCtrl'
+        controller: 'PostsIndexCtrl',
+        resolve: {
+          posts: ['Restangular', function(Restangular){
+            return Restangular.all('posts').getList();
+          }]
+        }
       })
 
 
