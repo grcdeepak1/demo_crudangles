@@ -1,7 +1,6 @@
 crudAngles.controller('PostsIndexCtrl', ['$scope', 'posts', 'Restangular',
   function($scope, posts, Restangular){
     $scope.posts = posts;
-    $scope.testValue = "Hello Post Indexy World."
 
     $scope.addPost = function(){
 

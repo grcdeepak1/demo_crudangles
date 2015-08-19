@@ -1,0 +1,29 @@
+<div class= "container">
+  <h3>{{ post.title }}</h3>
+  <p>
+    {{ post.body }} — <em>by {{ post.author }}</em> on {{ post.created_at | date }}
+  </p>
+
+
+
+  <form name="newComment">
+    <h3>Comment On This Post</h3>
+    <label>
+    Author
+    <input type="text" ng-model="newComment.author">
+    </label><br>
+    <label>
+    Post Body
+    <textarea ng-model="newComment.body"></textarea>
+    </label>
+    <input type="submit" value="Create New Comment" ng-click="addComment()">
+  </form>
+
+  <div ng-repeat="comment in post.comments | orderBy : '-created_at'">
+    <h6>Comment by {{comment.author}}</h6>
+    <p><small>{{comment.body}}</small></p>
+  </div>
+
+
+
+</div>

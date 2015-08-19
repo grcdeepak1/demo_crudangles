@@ -25,6 +25,16 @@ var crudAngles = angular.module('crudAngles', ['ui.router', 'restangular'])
           }]
         }
       })
+      .state('posts.show', {
+        url: "/:id",
+        templateUrl: "/templates/postsShow.html",
+        controller: 'PostsShowCtrl',
+        resolve: {
+          post: ['Restangular', '$stateParams',
+                  function(Restangular, $stateParams){
+                    return Restangular.one('posts', $stateParams.id).get();
+                }]}
+      })
 
 
     $urlRouterProvider.otherwise('/posts');
